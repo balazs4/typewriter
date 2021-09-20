@@ -1,5 +1,13 @@
-import {Foo} from './@types';
+import plus, { Interface as Plus } from './plus';
+import minus, { Interface as Minus } from './minus';
 
-function add({ a, b }: Foo): Number {
-  return a + b;
-}
+const calc = { plus, minus };
+
+const [, , a, operator, b] = process.argv;
+const input: Plus | Minus = {
+  a: parseInt(a),
+  b: parseInt(b),
+};
+
+const ans: number = calc[operator](input);
+console.log({ ans });
