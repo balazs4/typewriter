@@ -1,13 +1,9 @@
-import plus, { Interface as Plus } from './plus';
-import minus, { Interface as Minus } from './minus';
+type ICalculationFn = (input: { a: number; b: number }) => number;
 
-const calc = { plus, minus };
+const plus: ICalculationFn = (input) => input.a + input.b;
 
-const [, , a, operator, b] = process.argv;
-const input: Plus | Minus = {
-  a: parseInt(a),
-  b: parseInt(b),
-};
+const [, , a, b] = process.argv;
 
-const ans: number = calc[operator](input);
-console.log({ ans });
+const result = plus({ a: parseInt(a), b: parseInt(b) });
+
+console.log(result);
