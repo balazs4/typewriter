@@ -1,9 +1,11 @@
-type ICalculationFn = (input: { a: number; b: number }) => number;
+type CalculationInputParameter = { a: number; b: number };
+type ICalculationFn = (input: CalculationInputParameter) => number;
 
 const plus: ICalculationFn = (input) => input.a + input.b;
 
 const [, , a, b] = process.argv;
 
-const result = plus({ a: parseInt(a), b: parseInt(b) });
+const input: CalculationInputParameter = { a: 4, b: 5 };
+const result = plus(input);
 
 console.log(result);
